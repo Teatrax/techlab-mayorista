@@ -1,0 +1,9 @@
+/* Reseteo limpio para e-commerce mayorista */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #1f2937;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}

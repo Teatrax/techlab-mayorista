@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "nombre": "Placa de Video RTX 4060 8GB",
+    "categoria": "Tecnología",
+    "precio": 450000,
+    "stock": 10,
+    "img": "/img/RTX-4060-1.jpg",
+    "imagenes": [
+    "/img/RTX-4060-1.jpg",
+    "/img/RTX-4060-2.jpg",
+    "/img/RTX-4060-3.jpg"
+  ]
+  },
+  {
+    "id": 2,
+    "nombre": "Aceite de Girasol 1.5L (Caja x 12)",
+    "categoria": "Alimentos",
+    "precio": 28500,
+    "stock": 45,
+    "img": "/img/aceite.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Gaseosa Cola 2.25L (Pack x 6)",
+    "categoria": "Bebidas Sin Alcohol",
+    "precio": 16200,
+    "stock": 60,
+    "img": "/img/coca.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Cerveza Rubia 473ml (Pack x 24)",
+    "categoria": "Bebidas Alcohol",
+    "precio": 36000,
+    "stock": 30,
+    "img": "/img/birra.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Jugo Puro de Naranja 1L (Caja x 12)",
+    "categoria": "Jugos",
+    "precio": 22400,
+    "stock": 40,
+    "img": "/img/naranja.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Monitor Gamer 24'' 144Hz IPS",
+    "categoria": "Tecnología",
+    "precio": 210000,
+    "stock": 12,
+    "img": "/img/monitor4.webp",
+    "imagenes": [
+    "/img/monitor1.webp",
+    "/img/monitor2.webp",
+    "/img/monitor3.webp"
+  ]
+  },
+  {
+    "id": 7,
+    "nombre": "Fideos Tallarines 500g (Caja x 20)",
+    "categoria": "Alimentos",
+    "precio": 19500,
+    "stock": 50,
+    "img": "/img/fideos.webp"
+  },
+  {
+    "id": 8,
+    "nombre": "Gaseosa Lima Limon 1.5L (Pack x 6)",
+    "categoria": "Bebidas Sin Alcohol",
+    "precio": 13800,
+    "stock": 35,
+    "img": "/img/lima.webp"
+  },
+  {
+    "id": 9,
+    "nombre": "Vino Malbec Roble 750ml (Caja x 6)",
+    "categoria": "Bebidas Alcohol",
+    "precio": 29800,
+    "stock": 25,
+    "img": "/img/vino.webp"
+  },
+  {
+    "id": 11,
+    "nombre": "Teclado Mecánico RGB Switch Red",
+    "categoria": "Tecnología",
+    "precio": 52000,
+    "stock": 18,
+    "img": "/img/teclado2.webp",
+    "imagenes" :[
+    "/img/teclado1.webp",
+    "/img/teclado2.webp"
+  ] 
+  },
+  {
+    "id": 15,
+    "nombre": "Mouse Inalámbrico Ergonómico 2.4GHz",
+    "categoria": "Tecnología",
+    "precio": 26500,
+    "stock": 30,
+    "img": "/img/mouse1.webp",
+    "imagenes":[
+    "/img/mouse1.webp",
+    "/img/mouse2.webp",
+    "/img/mouse3.webp"
+   ]
+  }
+]
