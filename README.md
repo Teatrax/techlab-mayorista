@@ -51,13 +51,6 @@ src/
 
 La lógica de stock del carrito está solo en `src/utils/cartUtils.js`.
 
-## Convenciones
-
-- Nombres técnicos (funciones, hooks, componentes) en inglés.
-- Nombres del dominio (producto, carrito, cantidad, precio) en español, igual que los datos de `productos.json`.
-- Comentarios cortos que explican qué hace cada parte.
-- Cada imagen de producto va en el arreglo `imagenes`; la primera es la que se ve en el catálogo.
-
 ## Rutas
 
 | Ruta | Pantalla |
