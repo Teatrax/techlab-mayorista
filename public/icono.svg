@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <!-- Fondo Redondeado Oscuro que se acopla al Header (#18191c) -->
+  <rect width="64" height="64" rx="14" fill="#18191c"/>
+  
+  <!-- Sombra de la Base -->
+  <ellipse cx="32" cy="54" rx="18" ry="3.5" fill="#0c0c0d" opacity="0.4"/>
+  
+  <g transform="translate(1, -1)">
+    <!-- TAPA / SOLAPA SUPERIOR CERRADA -->
+    <polygon points="31,13 50,22 31,31 12,22" fill="#ffb703" stroke="#ffa000" stroke-width="1.2" stroke-linejoin="round"/>
+    
+    <!-- Cintas de Embalar de la Caja Cerrada -->
+    <polygon points="26,15.4 45,24.4 42,25.8 23,16.8" fill="#e0a800"/>
+    <polygon points="36,15.4 17,24.4 20,25.8 39,16.8" fill="#e0a800"/>
+    
+    <!-- Sello/Código de Barras en la Tapa -->
+    <line x1="18" y1="18" x2="21" y2="19.5" stroke="#18191c" stroke-width="1" stroke-linecap="round"/>
+    <line x1="20" y1="17" x2="23" y2="18.5" stroke="#18191c" stroke-width="1" stroke-linecap="round"/>
+    <line x1="22" y1="16" x2="25" y2="17.5" stroke="#18191c" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- Sello de "Este Lado Arriba" (Dos Flechas) en la Tapa -->
+    <path d="M 44,19 L 45.5,18.3 M 44,19 L 42.5,19.7 M 44,19 L 46.5,20.2" stroke="#18191c" stroke-width="0.8"/>
+    <path d="M 41,17.5 L 42.5,16.8 M 41,17.5 L 39.5,18.2 M 41,17.5 L 43.5,18.7" stroke="#18191c" stroke-width="0.8"/>
+
+    <!-- CARA IZQUIERDA (Circuitos / Tecnología) -->
+    <polygon points="12,22 31,31 31,49 12,40" fill="#e0a800"/>
+    <!-- Pistas de Circuitos Grabados en la Cara Izquierda -->
+    <path d="M 16,26.5 L 24,30.3 L 24,37" stroke="#ffb703" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="16" cy="26.5" r="1.2" fill="#fff"/>
+    <circle cx="24" cy="37" r="1.2" fill="#ffa000"/>
+    
+    <path d="M 21,24.3 L 28,27.5 L 28,34.5" stroke="#ffb703" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="28" cy="34.5" r="1" fill="#fff"/>
+    
+    <!-- Cinta de seguridad frontal que cae -->
+    <polygon points="26.5,28.8 30.5,30.7 30.5,41.7 26.5,39.8" fill="#ffa000" opacity="0.8"/>
+
+    <!-- CARA DERECHA (Bulto Mayorista / Envío) -->
+    <polygon points="31,31 50,22 50,40 31,49" fill="#ffa000"/>
+    <!-- Marcas de Fragilidad / Código Mayorista -->
+    <rect x="35" y="32" width="5" height="12" fill="#ffca28" opacity="0.3" transform="skewY(25)"/>
+    <!-- Circuitos en la Cara Derecha -->
+    <path d="M 36,36 L 44,32 L 44,41.5" stroke="#d48000" stroke-width="1.2" stroke-linejoin="round"/>
+    <circle cx="36" cy="36" r="1" fill="#fff"/>
+    <circle cx="44" cy="41.5" r="1" fill="#fff"/>
+
+    <!-- GRAN FLECHA DE DISTRIBUCIÓN / MOVIMIENTO (ORO Y BLANCO) -->
+    <!-- Flecha que abraza por detrás y surge por el frente -->
+    <path d="M 9,35 C 8,46 22,53 32,52 C 41,51.5 45,46 48,43" fill="none" stroke="#ffb703" stroke-width="4.5" stroke-linecap="round" opacity="0.95"/>
+    <path d="M 9,35 C 8,46 22,53 32,52 C 41,51.5 45,46 48,43" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+    
+    <!-- Punta de la Flecha de Distribución -->
+    <polygon points="52,38 48,47 43,41" fill="#ffb703" stroke="#ffa000" stroke-width="1"/>
+    <polygon points="50,39.5 47,45 44,41.5" fill="#ffffff"/>
+  </g>
+</svg>

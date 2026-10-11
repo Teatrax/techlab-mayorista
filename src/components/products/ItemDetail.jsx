@@ -5,9 +5,11 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = ({ producto }) => {
   // Soporta tanto array "imagenes" como el formato anterior "img"
-  const listaImagenes = producto.imagenes || [producto.img];
+  const listaImagenes = Array.isArray(producto.imagenes) && producto.imagenes.length > 0
+    ? producto.imagenes
+    : [producto.img];
+
   const [imagenSeleccionada, setImagenSeleccionada] = useState(listaImagenes[0]);
-  
   const [agregado, setAgregado] = useState(false);
   const { carrito, addToCart } = useCart();
 
@@ -16,6 +18,7 @@ const ItemDetail = ({ producto }) => {
   const stockDisponible = producto.stock - cantidadEnCarrito;
 
   const handleOnAdd = (cantidad) => {
+    if (stockDisponible <= 0) return;
     addToCart(producto, cantidad);
     setAgregado(true);
   };
@@ -25,7 +28,6 @@ const ItemDetail = ({ producto }) => {
       <div className="row g-4 align-items-center">
         {/* Columna de Galería */}
         <div className="col-12 col-md-5">
-          {/* Imagen Principal */}
           <div className="ratio ratio-4x3 bg-light rounded-3 overflow-hidden border mb-2">
             <img 
               src={imagenSeleccionada} 
@@ -34,15 +36,16 @@ const ItemDetail = ({ producto }) => {
             />
           </div>
 
-          {/* Miniaturas navegables */}
           {listaImagenes.length > 1 && (
-            <div className="d-flex gap-2 justify-content-center">
+            <div className="d-flex gap-2 justify-content-center flex-wrap">
               {listaImagenes.map((foto, index) => (
                 <button
                   key={index}
                   type="button"
                   onClick={() => setImagenSeleccionada(foto)}
-                  className={`btn p-0 border rounded-2 overflow-hidden ${imagenSeleccionada === foto ? 'border-warning border-2 shadow-sm' : 'border-light'}`}
+                  className={`btn p-0 border rounded-2 overflow-hidden ${
+                    imagenSeleccionada === foto ? 'border-warning border-2 shadow-sm' : 'border-light'
+                  }`}
                   style={{ width: "60px", height: "60px" }}
                 >
                   <img src={foto} alt="" className="w-100 h-100 object-fit-cover" />
@@ -72,9 +75,15 @@ const ItemDetail = ({ producto }) => {
             )}
           </div>
 
-          <ItemCount stock={stockDisponible} initial={1} onAdd={handleOnAdd} />
+          {/* Se reinicia cuando cambia el stock disponible */}
+          <ItemCount 
+            key={stockDisponible} 
+            stock={stockDisponible} 
+            initial={1} 
+            onAdd={handleOnAdd} 
+          />
 
-          <div className="d-flex gap-2 mt-3">
+          <div className="d-flex gap-2 mt-3 flex-wrap">
             {cantidadEnCarrito > 0 && (
               <Link to="/carrito" className="btn btn-success fw-bold px-3">
                 Ir al Carrito ({cantidadEnCarrito})

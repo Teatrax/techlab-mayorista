@@ -44,7 +44,7 @@ const ItemListContainer = ({ greeting }) => {
           <div className="spinner-border text-warning" role="status">
             <span className="visually-hidden">Cargando...</span>
           </div>
-          <p className="text-muted mt-2">Cargando catálogo mayorista...</p>
+          <p className="text-muted mt-2">Cargando catalogo mayorista...</p>
         </div>
       ) : (
         <>

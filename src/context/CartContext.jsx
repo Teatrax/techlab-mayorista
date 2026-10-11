@@ -10,18 +10,26 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
 
-  // Funcion para agregar un producto o sumar cantidad si ya existe
+  // Funcion para agregar un producto validando estrictamente el stock maximo
   const addToCart = (producto, cantidad = 1) => {
     setCarrito((prevCarrito) => {
       const existe = prevCarrito.find((item) => item.id === producto.id);
+
       if (existe) {
+        const nuevaCantidad = existe.cantidad + cantidad;
+        // Si la suma supera el stock máximo, topa al límite real del producto
+        const cantidadValida = nuevaCantidad > producto.stock ? producto.stock : nuevaCantidad;
+
         return prevCarrito.map((item) =>
           item.id === producto.id
-            ? { ...item, cantidad: item.cantidad + cantidad }
+            ? { ...item, cantidad: cantidadValida }
             : item
         );
       }
-      return [...prevCarrito, { ...producto, cantidad }];
+
+      
+      const cantidadInicial = cantidad > producto.stock ? producto.stock : cantidad;
+      return [...prevCarrito, { ...producto, cantidad: cantidadInicial }];
     });
   };
 
@@ -38,7 +46,7 @@ export const CartProvider = ({ children }) => {
   // Total de unidades para la badge del carrito (CartWidget)
   const totalCantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
-  // Total
+  // Total en pesos
   const totalPrecio = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
   return (
