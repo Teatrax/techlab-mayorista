@@ -1,33 +1,32 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
+import { CartProvider } from './context/CartProvider';
 import Layout from './components/layout/Layout';
 import HomeView from './pages/HomeView';
-import ItemListContainer from './components/products/ItemListContainer';
-import ItemDetailContainer from './components/products/ItemDetailContainer';
+import CatalogView from './pages/CatalogView';
+import ProductDetailView from './pages/ProductDetailView';
 import CartView from './pages/CartView';
+import NotFoundView from './pages/NotFoundView';
 
-function App() {
-  return (
-    <CartProvider>
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            {/* 1. Portada institucional */}
-            <Route path="/" element={<HomeView />} />
-            
-            {/* 2. Catálogo mayorista */}
-            <Route path="/productos" element={<ItemListContainer greeting="Catálogo Mayorista TechLab" />} />
-            
-            {/* 3. Detalle de producto */}
-            <Route path="/producto/:id" element={<ItemDetailContainer />} />
-            
-            {/* 4. Carrito */}
-            <Route path="/carrito" element={<CartView />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </CartProvider>
-  );
-}
+// Raíz de la app: carrito compartido, rutas y estructura común
+const App = () => (
+  <CartProvider>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          {/* Portada */}
+          <Route path="/" element={<HomeView />} />
+          {/* Catálogo mayorista */}
+          <Route path="/productos" element={<CatalogView />} />
+          {/* Detalle de un producto */}
+          <Route path="/producto/:id" element={<ProductDetailView />} />
+          {/* Carrito de compras */}
+          <Route path="/carrito" element={<CartView />} />
+          {/* Cualquier otra dirección */}
+          <Route path="*" element={<NotFoundView />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  </CartProvider>
+);
 
 export default App;

@@ -5,12 +5,11 @@
     "categoria": "Tecnología",
     "precio": 450000,
     "stock": 10,
-    "img": "/img/RTX-4060-1.jpg",
     "imagenes": [
-    "/img/RTX-4060-1.jpg",
-    "/img/RTX-4060-2.jpg",
-    "/img/RTX-4060-3.jpg"
-  ]
+      "/img/RTX-4060-1.jpg",
+      "/img/RTX-4060-2.jpg",
+      "/img/RTX-4060-3.jpg"
+    ]
   },
   {
     "id": 2,
@@ -18,7 +17,7 @@
     "categoria": "Alimentos",
     "precio": 28500,
     "stock": 45,
-    "img": "/img/aceite.jpg"
+    "imagenes": ["/img/aceite.jpg"]
   },
   {
     "id": 3,
@@ -26,7 +25,7 @@
     "categoria": "Bebidas Sin Alcohol",
     "precio": 16200,
     "stock": 60,
-    "img": "/img/coca.jpg"
+    "imagenes": ["/img/coca.jpg"]
   },
   {
     "id": 4,
@@ -34,7 +33,7 @@
     "categoria": "Bebidas Alcohol",
     "precio": 36000,
     "stock": 30,
-    "img": "/img/birra.jpg"
+    "imagenes": ["/img/birra.jpg"]
   },
   {
     "id": 5,
@@ -42,7 +41,7 @@
     "categoria": "Jugos",
     "precio": 22400,
     "stock": 40,
-    "img": "/img/naranja.jpg"
+    "imagenes": ["/img/naranja.jpg"]
   },
   {
     "id": 6,
@@ -50,12 +49,12 @@
     "categoria": "Tecnología",
     "precio": 210000,
     "stock": 12,
-    "img": "/img/monitor4.webp",
     "imagenes": [
-    "/img/monitor1.webp",
-    "/img/monitor2.webp",
-    "/img/monitor3.webp"
-  ]
+      "/img/monitor4.webp",
+      "/img/monitor1.webp",
+      "/img/monitor2.webp",
+      "/img/monitor3.webp"
+    ]
   },
   {
     "id": 7,
@@ -63,15 +62,15 @@
     "categoria": "Alimentos",
     "precio": 19500,
     "stock": 50,
-    "img": "/img/fideos.webp"
+    "imagenes": ["/img/fideos.webp"]
   },
   {
     "id": 8,
-    "nombre": "Gaseosa Lima Limon 1.5L (Pack x 6)",
+    "nombre": "Gaseosa Lima Limón 1.5L (Pack x 6)",
     "categoria": "Bebidas Sin Alcohol",
     "precio": 13800,
     "stock": 35,
-    "img": "/img/lima.webp"
+    "imagenes": ["/img/lima.webp"]
   },
   {
     "id": 9,
@@ -79,7 +78,7 @@
     "categoria": "Bebidas Alcohol",
     "precio": 29800,
     "stock": 25,
-    "img": "/img/vino.webp"
+    "imagenes": ["/img/vino.webp"]
   },
   {
     "id": 11,
@@ -87,11 +86,10 @@
     "categoria": "Tecnología",
     "precio": 52000,
     "stock": 18,
-    "img": "/img/teclado2.webp",
-    "imagenes" :[
-    "/img/teclado1.webp",
-    "/img/teclado2.webp"
-  ] 
+    "imagenes": [
+      "/img/teclado2.webp",
+      "/img/teclado1.webp"
+    ]
   },
   {
     "id": 15,
@@ -99,11 +97,10 @@
     "categoria": "Tecnología",
     "precio": 26500,
     "stock": 30,
-    "img": "/img/mouse1.webp",
-    "imagenes":[
-    "/img/mouse1.webp",
-    "/img/mouse2.webp",
-    "/img/mouse3.webp"
-   ]
+    "imagenes": [
+      "/img/mouse1.webp",
+      "/img/mouse2.webp",
+      "/img/mouse3.webp"
+    ]
   }
 ]

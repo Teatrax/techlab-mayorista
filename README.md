@@ -1,16 +1,71 @@
-# React + Vite
+# TechLab Mayorista
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tienda online mayorista de tecnología, alimentos y bebidas. Permite ver el catálogo paginado, entrar al detalle de cada producto y armar un pedido en el carrito.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + Vite
+- React Router (navegación)
+- Bootstrap 5 (estilos, solo CSS)
 
-## React Compiler
+## Cómo ejecutarlo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install      # instala las dependencias
+npm run dev      # servidor de desarrollo
+npm run build    # versión de producción
+npm run lint     # revisa el código con ESLint
+```
 
-## Expanding the ESLint configuration
+## Estructura de carpetas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+public/
+  productos.json      Catálogo de productos
+  img/                Imágenes de los productos
+src/
+  config/             Constantes de la app
+  utils/              Funciones puras (formato de precios, cálculos del carrito)
+  services/           Acceso a datos (catálogo y localStorage)
+  hooks/              Hooks reutilizables (useCart, useProducts, usePagination...)
+  context/            Contexto del carrito (CartContext y CartProvider)
+  data/               Datos fijos de la interfaz (equipo, beneficios)
+  components/
+    common/           Piezas genéricas (spinner, error, paginación)
+    layout/           Estructura de la página (header, footer, layout)
+    home/             Piezas de la portada
+    products/         Piezas del catálogo y del detalle de producto
+    cart/             Piezas del carrito
+  pages/              Una pantalla por ruta
+```
+
+## Cómo se reparten las responsabilidades
+
+| Capa | Responsabilidad |
+| --- | --- |
+| `pages` | Armar una pantalla combinando hooks y componentes |
+| `components` | Dibujar una parte de la interfaz |
+| `hooks` | Manejar estado y efectos reutilizables |
+| `services` | Leer y guardar datos (fetch y localStorage) |
+| `utils` | Calcular y formatear, sin estado ni efectos |
+
+La lógica de stock del carrito está solo en `src/utils/cartUtils.js`.
+
+## Convenciones
+
+- Nombres técnicos (funciones, hooks, componentes) en inglés.
+- Nombres del dominio (producto, carrito, cantidad, precio) en español, igual que los datos de `productos.json`.
+- Comentarios cortos que explican qué hace cada parte.
+- Cada imagen de producto va en el arreglo `imagenes`; la primera es la que se ve en el catálogo.
+
+## Rutas
+
+| Ruta | Pantalla |
+| --- | --- |
+| `/` | Portada |
+| `/productos` | Catálogo |
+| `/producto/:id` | Detalle de producto |
+| `/carrito` | Carrito |
+| cualquier otra | Página no encontrada |
+
+El carrito se guarda en `localStorage`, así que sobrevive a recargar la página.

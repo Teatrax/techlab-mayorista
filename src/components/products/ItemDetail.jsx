@@ -1,102 +1,75 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../hooks/useCart';
+import { getAvailableStock, getCartQuantity } from '../../utils/cartUtils';
+import { formatPrice } from '../../utils/formatPrice';
+import ImageGallery from './ImageGallery';
 import ItemCount from './ItemCount';
 
+// Ficha completa de un producto con galería y opción de compra
 const ItemDetail = ({ producto }) => {
-  // Soporta tanto array "imagenes" como el formato anterior "img"
-  const listaImagenes = Array.isArray(producto.imagenes) && producto.imagenes.length > 0
-    ? producto.imagenes
-    : [producto.img];
-
-  const [imagenSeleccionada, setImagenSeleccionada] = useState(listaImagenes[0]);
-  const [agregado, setAgregado] = useState(false);
   const { carrito, addToCart } = useCart();
+  const [added, setAdded] = useState(false);
 
-  const itemEnCarrito = carrito.find((item) => item.id === producto.id);
-  const cantidadEnCarrito = itemEnCarrito ? itemEnCarrito.cantidad : 0;
-  const stockDisponible = producto.stock - cantidadEnCarrito;
+  const cantidadEnCarrito = getCartQuantity(carrito, producto.id);
+  const stockDisponible = getAvailableStock(producto, carrito);
 
-  const handleOnAdd = (cantidad) => {
-    if (stockDisponible <= 0) return;
+  // Agrega al carrito y muestra el aviso de confirmación
+  const handleAdd = (cantidad) => {
     addToCart(producto, cantidad);
-    setAgregado(true);
+    setAdded(true);
   };
 
   return (
-    <div className="card shadow-sm border-0 p-4 bg-white rounded-3">
+    <div className="card shadow-sm border-0 p-4">
       <div className="row g-4 align-items-center">
-        {/* Columna de Galería */}
+        {/* Galería de imágenes */}
         <div className="col-12 col-md-5">
-          <div className="ratio ratio-4x3 bg-light rounded-3 overflow-hidden border mb-2">
-            <img 
-              src={imagenSeleccionada} 
-              alt={producto.nombre} 
-              className="w-100 h-100 object-fit-cover"
-            />
-          </div>
-
-          {listaImagenes.length > 1 && (
-            <div className="d-flex gap-2 justify-content-center flex-wrap">
-              {listaImagenes.map((foto, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setImagenSeleccionada(foto)}
-                  className={`btn p-0 border rounded-2 overflow-hidden ${
-                    imagenSeleccionada === foto ? 'border-warning border-2 shadow-sm' : 'border-light'
-                  }`}
-                  style={{ width: "60px", height: "60px" }}
-                >
-                  <img src={foto} alt="" className="w-100 h-100 object-fit-cover" />
-                </button>
-              ))}
-            </div>
-          )}
+          <ImageGallery imagenes={producto.imagenes} alt={producto.nombre} />
         </div>
 
-        {/* Columna de Datos */}
+        {/* Datos del producto */}
         <div className="col-12 col-md-7 text-start">
           <span className="badge bg-secondary mb-2">{producto.categoria}</span>
           <h2 className="fw-bold text-dark">{producto.nombre}</h2>
           <p className="text-muted small">Código: #{producto.id}</p>
-          <h3 className="text-success fw-bold my-3">
-            ${producto.precio.toLocaleString('es-AR')}
-          </h3>
+          <h3 className="text-success fw-bold my-3">{formatPrice(producto.precio)}</h3>
 
+          {/* Stock que todavía se puede agregar */}
           <div className="mb-3">
-            <span className={`badge ${stockDisponible > 0 ? 'bg-light text-dark border' : 'bg-danger text-white'}`}>
-              {stockDisponible > 0 ? `Stock disponible: ${stockDisponible} u.` : 'Sin stock disponible'}
+            <span
+              className={`badge ${
+                stockDisponible > 0 ? 'bg-light text-dark border' : 'bg-danger text-white'
+              }`}
+            >
+              {stockDisponible > 0
+                ? `Stock disponible: ${stockDisponible} u.`
+                : 'Sin stock disponible'}
             </span>
             {cantidadEnCarrito > 0 && (
               <small className="d-block text-muted mt-1">
-                (Ya tienes {cantidadEnCarrito} en tu carrito)
+                (Ya tenés {cantidadEnCarrito} en tu carrito)
               </small>
             )}
           </div>
 
-          {/* Se reinicia cuando cambia el stock disponible */}
-          <ItemCount 
-            key={stockDisponible} 
-            stock={stockDisponible} 
-            initial={1} 
-            onAdd={handleOnAdd} 
-          />
+          <ItemCount stock={stockDisponible} onAdd={handleAdd} />
 
+          {/* Accesos a otras pantallas */}
           <div className="d-flex gap-2 mt-3 flex-wrap">
             {cantidadEnCarrito > 0 && (
               <Link to="/carrito" className="btn btn-success fw-bold px-3">
-                Ir al Carrito ({cantidadEnCarrito})
+                Ir al carrito ({cantidadEnCarrito})
               </Link>
             )}
             <Link to="/productos" className="btn btn-outline-secondary">
-              Volver al catalogo
+              Volver al catálogo
             </Link>
           </div>
 
-          {agregado && (
-            <div className="alert alert-success mt-3 py-2 small" role="alert">
-              ¡Producto agregado al pedido correctamente!
+          {added && (
+            <div className="alert alert-success mt-3 py-2 small" role="status">
+              ¡Producto agregado al pedido!
             </div>
           )}
         </div>
